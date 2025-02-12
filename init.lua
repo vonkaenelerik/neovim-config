@@ -1,0 +1,2 @@
+require("rogue")
+print("hello")
