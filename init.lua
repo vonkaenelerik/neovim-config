@@ -1,2 +1,1 @@
-require("rogue")
-print("hello")
+require("config")
