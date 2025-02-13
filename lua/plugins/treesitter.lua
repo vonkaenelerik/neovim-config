@@ -8,30 +8,33 @@ return {
 	{
 		'nvim-treesitter/nvim-treesitter',
 		build = ':TSUpdate',
-		ops = {
-			sync_install = false,
-			auto_install = true,
-			highlight = { enable = true },
-			indent = { enable = true },
-			ensure_installed = {
-				"bash",
-				"c",
-				"gdscript",
-				"help",
-				"json",
-				"lua",
-				"luadoc",
-				"markdown",
-				"markdown_inline",
-				"python",
-				"r",
-				"regex",
-				"toml",
-				"vim",
-				"vimdoc",
-				"yaml",
-			}
-		}
+		config = function ()
+			require("nvim-treesitter.configs").setup({
+				sync_install = false,
+				auto_install = true,
+				highlight = { enable = true },
+				indent = { enable = true },
+				ensure_installed = {
+					"bash",
+					"c",
+					"gdscript",
+					"godot_resource",
+					"gdshader",
+					"json",
+					"lua",
+					"luadoc",
+					"markdown",
+					"markdown_inline",
+					"python",
+					"r",
+					"regex",
+					"toml",
+					"vim",
+					"vimdoc",
+					"yaml",
+				}
+			})
+		end
 	},
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
