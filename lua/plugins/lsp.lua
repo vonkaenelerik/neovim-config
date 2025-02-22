@@ -29,6 +29,7 @@ return {
 				'clangd',
 				'lua_ls',
 				'rust_analyzer',
+                'gdtoolkit',
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -79,10 +80,18 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
+                -- Ctrl-p: Navigate to previous item in completion menu
 				['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+
+                -- Ctrl-n: Navigate to next item in completion menu
 				['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+
+                -- Ctrl-y: Confirm selection in completion menu
 				['<C-y>'] = cmp.mapping.confirm({ select = true }),
+
+                -- Shift-Space: Manually trigger completion menu
 				['<S-Space>'] = cmp.mapping.complete(),
+
 				['<Tab>'] = cmp.mapping(function(fallback)
 					-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
 					if cmp.visible() then
