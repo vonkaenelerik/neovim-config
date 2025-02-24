@@ -68,3 +68,9 @@ end
 -- LSP rename symbol
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 
+for i = 1, 9 do
+    vim.keymap.set("n", "<leader>" .. i, function()
+        vim.cmd(i .. "wincmd w")
+    end, { noremap = true, silent = true })
+end
+

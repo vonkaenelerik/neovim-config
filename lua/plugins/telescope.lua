@@ -8,15 +8,23 @@ return {
     },
 
     config = function()
-        require('telescope').setup({})
+        require('telescope').setup({
+            defaults = {
+                file_ignore_patterns = { "%.uid$", "%.tscn$", "%.tres$" , "%.svg$", "%.import$", "%.blend$", "%.blend1$", "%.png$", "%.webp$", "%.glb$", "%.mp3$", "%.wav$"} -- Ignore .uid files
+            }
+        })
 
         local builtin = require('telescope.builtin')
 
         -- file search
-        vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>pf', function()
+            builtin.find_files()
+        end, {})
 
         -- git file search
-        vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+        vim.keymap.set('n', '<C-p>', function()
+            builtin.git_files()
+        end, {})
 
         -- greps for word under the cursor
         vim.keymap.set('n', '<leader>pws', function()
@@ -39,3 +47,4 @@ return {
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
     end
 }
+
