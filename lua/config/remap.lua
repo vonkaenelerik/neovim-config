@@ -74,3 +74,9 @@ for i = 1, 9 do
     end, { noremap = true, silent = true })
 end
 
+-- Add python markdown chunk
+vim.api.nvim_set_keymap('n', '<Leader>pc', 'o```{python}<CR>```<Esc>O', { noremap = true, silent = true })
+
+-- Add R markdown chunk
+vim.api.nvim_set_keymap('n', '<Leader>rc', 'o```{r}<CR>```<Esc>O', { noremap = true, silent = true })
+

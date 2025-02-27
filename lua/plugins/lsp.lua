@@ -30,6 +30,7 @@ return {
 				'lua_ls',
 				'rust_analyzer',
                 'gdtoolkit',
+				"ruff",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -63,6 +64,14 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+			}
+		})
+
+		require('lspconfig').ruff.setup({
+			init_options = {
+				settings = {
+					logLevel = 'debug'
+				}
 			}
 		})
 
