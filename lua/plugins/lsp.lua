@@ -29,7 +29,6 @@ return {
 				'clangd',
 				'lua_ls',
 				'rust_analyzer',
-                'gdtoolkit',
 				"ruff",
 			},
 			handlers = {
