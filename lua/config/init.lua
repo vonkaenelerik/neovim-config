@@ -13,12 +13,14 @@ autocmd({"BufWritePre"}, {
     command = [[%s/\s\+$//e]],
 })
 
+--[[
 autocmd('BufEnter', {
     group = config_group,
     callback = function()
 	vim.cmd.colorscheme "catppuccin"
     end
 })
+]]
 
 autocmd('LspAttach', {
     group = config_group,

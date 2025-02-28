@@ -80,3 +80,10 @@ vim.api.nvim_set_keymap('n', '<Leader>pc', 'o```{python}<CR>```<Esc>O', { norema
 -- Add R markdown chunk
 vim.api.nvim_set_keymap('n', '<Leader>rc', 'o```{r}<CR>```<Esc>O', { noremap = true, silent = true })
 
+-- Jump to next code chunk start
+vim.api.nvim_set_keymap('n', ']]', '/^```{[^}]*}<CR>', { noremap = true, silent = true })
+
+-- Jump to previous code chunk start
+vim.api.nvim_set_keymap('n', '[[', '?^```{[^}]*}<CR>', { noremap = true, silent = true })
+
+
