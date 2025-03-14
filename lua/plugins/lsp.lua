@@ -30,6 +30,7 @@ return {
 				'lua_ls',
 				'rust_analyzer',
 				"ruff",
+				"basedpyright",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
