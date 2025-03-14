@@ -1,3 +1,6 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('n', '<leader>pV', vim.cmd.Rex)
 
@@ -42,9 +45,6 @@ end)
 -- Search and replace the word under cursor (case-insensitive)
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])  -- Global replacement
 vim.keymap.set('n', '<leader>S', [[:%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>]])      -- Non-word-boundary replacement
-
--- Remap Ctrl+C in insert mode to Escape (alternative exit from insert mode)
-vim.keymap.set('i', '<C-c>', '<Esc>')
 
 -- Open LazyGit (Git TUI)
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
