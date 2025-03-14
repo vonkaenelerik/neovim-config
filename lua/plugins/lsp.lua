@@ -74,6 +74,21 @@ return {
 			}
 		}
 
+		require('lspconfig').pyright.setup {
+			settings = {
+				pyright = {
+					-- Using Ruff's import organizer
+					disableOrganizeImports = true,
+				},
+				python = {
+					analysis = {
+						-- Ignore all files for analysis to exclusively use Ruff for linting
+						ignore = { '*' },
+					},
+				},
+			},
+		}
+
 		require('lspconfig').gdscript.setup({ capabilities = capabilities })
 		vim.keymap.set('n', '<leader>sg', function()
 			vim.fn.serverstart '127.0.0.1:6004'
