@@ -35,6 +35,7 @@ return {
 				'lua_ls',
 				'rust_analyzer',
 				"ruff",
+				"basedpyright",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -71,13 +72,28 @@ return {
 			}
 		})
 
-		require('lspconfig').ruff.setup({
+		require('lspconfig').ruff.setup {
 			init_options = {
 				settings = {
-					logLevel = 'debug'
+					logLevel = 'debug',
 				}
 			}
-		})
+		}
+
+		require('lspconfig').pyright.setup {
+			settings = {
+				pyright = {
+					-- Using Ruff's import organizer
+					disableOrganizeImports = true,
+				},
+				python = {
+					analysis = {
+						-- Ignore all files for analysis to exclusively use Ruff for linting
+						ignore = { '*' },
+					},
+				},
+			},
+		}
 
 		require('lspconfig').gdscript.setup({ capabilities = capabilities })
 		vim.keymap.set('n', '<leader>sg', function()
@@ -136,6 +152,7 @@ return {
 					{ name = 'buffer' },
 				})
 		})
+
 		local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 		cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
