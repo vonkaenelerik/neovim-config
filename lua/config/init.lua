@@ -1,8 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
-require("config.lazy")
 require("config.remap")
+require("config.lazy")
 require("config.set")
 require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -10,6 +7,7 @@ local augroup = vim.api.nvim_create_augroup
 local config_group = augroup("config", {})
 
 local autocmd = vim.api.nvim_create_autocmd
+local yank_group = augroup('HighlightYank', {})
 
 
 autocmd({"BufWritePre"}, {
@@ -27,6 +25,17 @@ autocmd('BufEnter', {
 })
 ]]
 
+autocmd('TextYankPost', {
+    group = yank_group,
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = 'IncSearch',
+            timeout = 40,
+        })
+    end,
+})
+
 autocmd('LspAttach', {
     group = config_group,
     callback = function(e)
@@ -42,19 +51,4 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client == nil then
-      return
-    end
-    if client.name == 'ruff' then
-      -- Disable hover in favor of Pyright
-      client.server_capabilities.hoverProvider = false
-    end
-  end,
-  desc = 'LSP: Disable hover capability from Ruff',
 })

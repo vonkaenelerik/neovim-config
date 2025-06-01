@@ -8,6 +8,7 @@ return {
     },
 
     config = function()
+		local open_with_trouble = require("trouble.sources.telescope").open
         require('telescope').setup({
             defaults = {
                 file_ignore_patterns = {
@@ -24,11 +25,16 @@ return {
 					"%.mp3$",
 					"%.wav$",
 					"%.gitkeep$",
-				}
+				},
+				mappings = {
+					i = { ["<c-t>"] = open_with_trouble },
+					n = { ["<c-t>"] = open_with_trouble },
+				},
             }
         })
 
         local builtin = require('telescope.builtin')
+
 
         -- file search
         vim.keymap.set('n', '<leader>pf', function()
