@@ -80,4 +80,4 @@ vim.api.nvim_set_keymap('n', ']]', '/^```{[^}]*}<CR>', { noremap = true, silent 
 -- Jump to previous code chunk start
 vim.api.nvim_set_keymap('n', '[[', '?^```{[^}]*}<CR>', { noremap = true, silent = true })
 
-
+vim.api.nvim_set_keymap('n', '<leader>fr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", { noremap = true, silent = true })

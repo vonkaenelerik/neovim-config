@@ -4,6 +4,7 @@ vim.g.maplocalleader = ' '
 require("config.lazy")
 require("config.remap")
 require("config.set")
+require("luasnip.loaders.from_vscode").lazy_load()
 
 local augroup = vim.api.nvim_create_augroup
 local config_group = augroup("config", {})

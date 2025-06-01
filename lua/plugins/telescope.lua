@@ -10,7 +10,21 @@ return {
     config = function()
         require('telescope').setup({
             defaults = {
-                file_ignore_patterns = { "%.uid$", "%.tscn$", "%.tres$" , "%.svg$", "%.import$", "%.blend$", "%.blend1$", "%.png$", "%.webp$", "%.glb$", "%.mp3$", "%.wav$"} -- Ignore .uid files
+                file_ignore_patterns = {
+					"%.uid$",
+					"%.tscn$",
+					"%.tres$" ,
+					"%.svg$",
+					"%.import$",
+					"%.blend$",
+					"%.blend1$",
+					"%.png$",
+					"%.webp$",
+					"%.glb$",
+					"%.mp3$",
+					"%.wav$",
+					"%.gitkeep$",
+				}
             }
         })
 
