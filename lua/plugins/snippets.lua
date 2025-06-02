@@ -7,18 +7,25 @@ return {
 		build = "make install_jsregexp",
 
 		dependencies = { "rafamadriz/friendly-snippets" },
-
 		config = function()
 			local ls = require("luasnip")
-			require("luasnip.loaders.from_vscode").lazy_load()
+			ls.filetype_extend("javascript", { "jsdoc" })
 
-			--- TODO: What is expand?
-			vim.keymap.set({"i"}, "ii", function() ls.expand() end, {silent = true})
+			-- Jump with Tab/Shift-Tab
+			vim.keymap.set({"i", "s"}, "<Tab>", function()
+				if ls.expand_or_jumpable() then
+					ls.expand_or_jump()
+				end
+			end, {silent = true})
 
-			vim.keymap.set({"i", "s"}, "<J>;", function() ls.jump(1) end, {silent = true})
-			vim.keymap.set({"i", "s"}, "<K>,", function() ls.jump(-1) end, {silent = true})
+			vim.keymap.set({"i", "s"}, "<S-Tab>", function()
+				if ls.jumpable(-1) then
+					ls.jump(-1)
+				end
+			end, {silent = true})
 
-			vim.keymap.set({"i", "s"}, "<C-E>", function()
+			-- Optional: Change choice (for choice nodes)
+			vim.keymap.set({"i", "s"}, "<C-l>", function()
 				if ls.choice_active() then
 					ls.change_choice(1)
 				end
@@ -26,3 +33,4 @@ return {
 		end,
 	}
 }
+
