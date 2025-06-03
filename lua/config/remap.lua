@@ -1,5 +1,17 @@
 vim.g.mapleader = " "
 
+-- Write/Quit shortcuts
+vim.keymap.set('n', '<leader>w', vim.cmd.w)
+vim.keymap.set('n', '<leader>W', vim.cmd.W)
+vim.keymap.set('n', '<leader>q', vim.cmd.q)
+vim.keymap.set('n', '<leader>Q', vim.cmd.Q)
+
+-- Window navigation
+vim.keymap.set('n', '<leader>h', '<C-w>h')
+vim.keymap.set('n', '<leader>j', '<C-w>j')
+vim.keymap.set('n', '<leader>k', '<C-w>k')
+vim.keymap.set('n', '<leader>l', '<C-w>l')
+
 -- Escape
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
@@ -64,8 +76,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
 -- Quickfix/location list
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") -- Navigate to next item in quickfix list and center
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz") -- Navigate to previous item in quickfix list and center
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz") -- Navigate to next item in location list and center
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz") -- Navigate to previous item in location list and center
+vim.keymap.set("n", "C-K", "<cmd>lnext<CR>zz") -- Navigate to next item in location list and center
+vim.keymap.set("n", "C-J", "<cmd>lprev<CR>zz") -- Navigate to previous item in location list and center
 
 -- Replace selection with user input
 vim.api.nvim_set_keymap('v', '<leader>r', ':<C-u>lua ReplaceSelection()<CR>', { noremap = true, silent = false })
