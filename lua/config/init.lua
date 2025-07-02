@@ -9,6 +9,7 @@ local config_group = augroup("config", {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
+vim.opt.termguicolors = true
 
 autocmd({"BufWritePre"}, {
     group = config_group,
