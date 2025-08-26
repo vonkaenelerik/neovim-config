@@ -28,12 +28,17 @@ return {
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({
+				variant = "moon",
 				disable_background = false,
 			})
-			vim.cmd("colorscheme rose-pine")
-			ColorMyPencils()
 		end,
 	},
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "rebelot/kanagawa.nvim", name = "kanagawa" },
+	{ "catppuccin/nvim", name = "catppuccin" },
+	{
+		"rebelot/kanagawa.nvim",
+		name = "kanagawa",
+		config = function()
+			require("kanagawa").setup({})
+		end,
+	},
 }
