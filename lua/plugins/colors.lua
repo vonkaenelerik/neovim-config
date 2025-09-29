@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "kanagawa"
+	color = color or "gruvdark"
 	vim.cmd.colorscheme(color)
 end
 
@@ -40,5 +40,11 @@ return {
 		config = function()
 			require("kanagawa").setup({})
 		end,
+	},
+	{
+		"darianmorat/gruvdark.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
 	},
 }
