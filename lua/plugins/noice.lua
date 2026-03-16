@@ -7,6 +7,10 @@ return{
 	config = function()
 		require("noice").setup({
 			lsp = {
+				-- LSP progress handling fix
+				progress = {
+					enabled = false,  -- Disable to avoid token concatenation error
+				},
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,

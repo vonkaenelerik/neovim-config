@@ -24,16 +24,6 @@ vim.keymap.set("n", "<leader>pV", "<CMD>Oil .<CR>", { desc = "Open current direc
 -- Insert escaping
 vim.keymap.set("i", "jj", "<Esc>")
 
--- Highlight when yanking (copying) text
---  `yap` to copy entire paragraph
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
 -- Moving visual selection
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -79,8 +69,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 -- Quickfix/location list
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") -- Navigate to next item in quickfix list and center
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz") -- Navigate to previous item in quickfix list and center
-vim.keymap.set("n", "C-K", "<cmd>lnext<CR>zz") -- Navigate to next item in location list and center
-vim.keymap.set("n", "C-J", "<cmd>lprev<CR>zz") -- Navigate to previous item in location list and center
+vim.keymap.set("n", "<C-K>", "<cmd>lnext<CR>zz") -- Navigate to next item in location list and center
+vim.keymap.set("n", "<C-J>", "<cmd>lprev<CR>zz") -- Navigate to previous item in location list and center
 
 -- Replace selection with user input
 vim.api.nvim_set_keymap("v", "<leader>r", ":<C-u>lua ReplaceSelection()<CR>", { noremap = true, silent = false })
