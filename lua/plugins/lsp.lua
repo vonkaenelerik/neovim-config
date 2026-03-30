@@ -22,6 +22,7 @@ return {
 				"clangd",
 				"lua_ls",
 				"ruff",
+				"basedpyright",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -51,6 +52,22 @@ return {
 				end,
 			}
 		})
+
+		-- Fallback: set up servers available on PATH but not installed via Mason
+		local mason_registry = require("mason-registry")
+		local fallback_servers = {
+			{ mason_name = "basedpyright", lsp_name = "basedpyright" },
+			{ mason_name = "ruff",         lsp_name = "ruff" },
+		}
+		for _, server in ipairs(fallback_servers) do
+			if not mason_registry.is_installed(server.mason_name) then
+				if vim.fn.executable(server.lsp_name) == 1 then
+					require("lspconfig")[server.lsp_name].setup {
+						capabilities = capabilities,
+					}
+				end
+			end
+		end
 
 		vim.diagnostic.config({
 			-- update_in_insert = true,
